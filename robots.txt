@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dzenden59-cmyk.github.io/portfolio/sitemap.xml

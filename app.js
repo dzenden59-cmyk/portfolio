@@ -1,0 +1,37 @@
+// Screenshot of the real app, own account, sorted by views.
+const media = {"reel-lakhta": {"title": "Лахту закрутили штопором", "label": "Моушн-графика и 3D", "duration": 72.341}, "reel1002": {"title": "Какой район Питера лучший?", "label": "Карты и моушн-графика", "duration": 76.067}, "blog-lesha-misha": {"title": "Лёша и Миша: одна зарплата", "label": "Анимационная серия", "duration": 51.367}, "reel1008": {"title": "Зима в загородном доме", "label": "Графика и расчёты", "duration": 79.9}, "reel1010": {"title": "Дом, который велели снести", "label": "Визуальная история", "duration": 108.933333}, "vocal-history": {"title": "Кто был первой рок-звездой?", "label": "История о музыке", "url": "https://www.instagram.com/reel/DcI7-wcsady/", "duration": 74.279002}, "vocal-expert": {"title": "Почему песни длятся 3 минуты", "label": "Второй ролик преподавателя", "url": "https://www.instagram.com/reel/DcOx2dEs1Ja/", "duration": 72.212993}, "personal-meme": {"title": "Личный аккаунт — мем-формат", "label": "Личный аккаунт", "url": "https://www.instagram.com/reel/Dc1kWwRotTB/", "duration": 76.7}};
+const proof = {vocal:{title:'Вокал — статистика',src:'stats-vocal.webp',note:'За 30 дней работы на небольшом аккаунте. Размер аккаунта — 1 900 подписчиков. Период работы указан автором.'},realty:{title:'Недвижимость — статистика',src:'stats-realty.webp',note:'За 30 дней работы на небольшом аккаунте. Размер аккаунта — 550 подписчиков. Период работы указан автором.'},personal:{title:'Личный аккаунт — статистика',src:'stats-personal.webp',note:'Диапазон отчёта на скрине: 31 июля — 28 октября. Активная работа над аккаунтом — 30 дней.'}};
+
+proof['operator-01']={title:'Операторская работа — кадр 1',src:'operator-frame-01.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-02']={title:'Операторская работа — кадр 2',src:'operator-frame-02.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-03']={title:'Операторская работа — кадр 3',src:'operator-frame-03.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-04']={title:'Операторская работа — кадр 4',src:'operator-frame-04.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-05']={title:'Операторская работа — кадр 5',src:'operator-frame-05.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-06']={title:'Операторская работа — кадр 6',src:'operator-frame-06.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-07']={title:'Операторская работа — кадр 7',src:'operator-frame-07.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-08']={title:'Операторская работа — кадр 8',src:'operator-frame-08.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-09']={title:'Операторская работа — кадр 9',src:'operator-frame-09.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-10']={title:'Операторская работа — кадр 10',src:'operator-frame-10.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-11']={title:'Операторская работа — кадр 11',src:'operator-frame-11.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-12']={title:'Операторская работа — кадр 12',src:'operator-frame-12.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-13']={title:'Операторская работа — кадр 13',src:'operator-frame-13.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['operator-14']={title:'Операторская работа — кадр 14',src:'operator-frame-14.webp',note:'Кадр из предоставленных автором материалов. Роль: видеооператор.'};
+proof['kids-1']={title:'Детский YouTube — выпуски и просмотры',src:'kids-proof-1.webp',note:'Режиссура и организация съёмок, помощь продюсеру.'};
+proof['kids-2']={title:'Детский YouTube — выпуски и просмотры',src:'kids-proof-2.webp',note:'Режиссура и организация съёмок, помощь продюсеру.'};
+proof.producerdash={title:'ProducerDash',src:'producerdash-real.jpg',note:'Настоящий экран приложения. Личный аккаунт, сохранённые метрики от 19 октября 2026.'};
+const modal=document.querySelector('#media-modal'), player=document.querySelector('#player'), photo=document.querySelector('#proof-image'), title=document.querySelector('#modal-title'), note=document.querySelector('#media-note'), source=document.querySelector('#source-link'), error=document.querySelector('#media-error');
+let opener;
+for(const el of document.querySelectorAll('[data-duration]')){const s=Math.round(media[el.dataset.duration].duration);el.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+function openModal(button){opener=button;error.hidden=true;modal.showModal();document.body.classList.add('modal-open');}
+for(const button of document.querySelectorAll('[data-video]'))button.addEventListener('click',()=>{const id=button.dataset.video,m=media[id];photo.hidden=true;player.hidden=false;player.src='assets/'+id+'.mp4';player.poster='assets/'+id+'.webp';title.textContent=m.title;note.textContent=m.label;source.hidden=!m.url;if(m.url)source.href=m.url;else source.removeAttribute('href');openModal(button);player.play().catch(()=>{});});
+for(const button of document.querySelectorAll('[data-proof]'))button.addEventListener('click',()=>{const p=proof[button.dataset.proof];player.pause();player.hidden=true;photo.hidden=false;photo.src='assets/'+p.src;photo.alt=p.title;title.textContent=p.title;note.textContent=p.note;source.hidden=true;source.removeAttribute('href');openModal(button);});
+document.querySelector('#close-modal').addEventListener('click',()=>modal.close());
+modal.addEventListener('click',e=>{if(e.target===modal){const b=modal.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)modal.close();}});
+modal.addEventListener('close',()=>{player.pause();player.removeAttribute('src');player.load();photo.removeAttribute('src');document.body.classList.remove('modal-open');opener?.focus();});
+player.addEventListener('error',()=>{if(player.getAttribute('src')){error.hidden=false;error.textContent=source.hidden?'Не удалось загрузить видео. Попробуйте открыть просмотр ещё раз.':'Не удалось загрузить видео. Используйте ссылку на оригинал ниже.';}});
+
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+function selectProjects(platform,focus=false){for(const t of tabs){const selected=t.id===platform+'-tab';t.setAttribute('aria-selected',String(selected));t.tabIndex=selected?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!selected;if(selected&&focus)t.focus();}}
+for(const t of tabs){t.addEventListener('click',()=>selectProjects(t.id.replace('-tab','')));t.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();selectProjects(e.key==='Home'?'instagram':e.key==='End'?'youtube':t.id==='instagram-tab'?'youtube':'instagram',true);}});}
+for(const a of document.querySelectorAll('[data-view]'))a.addEventListener('click',()=>selectProjects(a.dataset.view));
+for(const a of document.querySelectorAll('a[href="#cases"]'))a.addEventListener('click',()=>selectProjects('instagram'));
